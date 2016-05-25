@@ -1,9 +1,15 @@
 package com.computemachines.audiotransform;
 
+import android.support.test.espresso.Espresso;
+import android.support.test.espresso.ViewAction;
+import android.support.test.espresso.ViewInteraction;
+import android.support.test.espresso.action.ViewActions;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,10 +31,21 @@ public class FinderNewRecording {
     @Rule
     public ActivityTestRule<FinderActivity> mFinderRule = new ActivityTestRule<>(FinderActivity.class);
 
-    @Test
+    @Before
     public void startRecording_FabShowsFragment() {
-        onView(withId(R.id.microphone_layout)).check(doesNotExist());
+        ViewInteraction fragmentView = onView(withId(R.id.microphone_layout));
+
+        fragmentView.check(doesNotExist());
         onView(withId(R.id.fab)).perform(click());
-        onView(withId(R.id.microphone_layout)).check(matches(isDisplayed()));
+        fragmentView.check(matches(isDisplayed()));
+    }
+    @Test
+    public void startRecording_pressBack() {
+        Espresso.pressBack();
+    }
+
+    @After
+    public void startRecording_fragmentIsDismissed() {
+        onView(withId(R.id.microphone_layout)).check(doesNotExist());
     }
 }
