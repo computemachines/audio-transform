@@ -18,7 +18,23 @@ public class MicrophoneDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setView(getActivity().getLayoutInflater().inflate(R.layout.fragment_microphone, null));
+        View layout = getActivity().getLayoutInflater().inflate(R.layout.fragment_microphone, null);
+        initListeners(layout);
+        builder.setView(layout);
         return builder.create();
+    }
+    private void initListeners(View layout) {
+        layout.findViewById(R.id.microphone_cancel).setOnClickListener(new View.OnClickListener() {
+            public DialogFragment dialogFragment;
+
+            @Override
+            public void onClick(View v) {
+                dialogFragment.dismiss();
+            }
+            public View.OnClickListener init(DialogFragment dialogFragment){
+                this.dialogFragment = dialogFragment;
+                return this;
+            }
+        }.init(this));
     }
 }

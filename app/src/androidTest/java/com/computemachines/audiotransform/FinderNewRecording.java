@@ -39,9 +39,14 @@ public class FinderNewRecording {
         onView(withId(R.id.fab)).perform(click());
         fragmentView.check(matches(isDisplayed()));
     }
+
     @Test
     public void startRecording_pressBack() {
         Espresso.pressBack();
+    }
+    @Test
+    public void startRecording_pressCancel() {
+        onView(withId(R.id.microphone_cancel)).perform(click());
     }
 
     @After
