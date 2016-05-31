@@ -15,4 +15,5 @@ test:
     - adb install -rt app/build/outputs/apk/app-debug.apk
     - adb install -rt app/build/outputs/apk/app-debug-androidTest-unaligned.apk
     - monkeyrunner snapshots.py
+    - ./gradlew cAT
     - mv -v *.png $CIRCLE_ARTIFACTS/
