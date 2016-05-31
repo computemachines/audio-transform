@@ -36,7 +36,7 @@ public class FinderNewRecording {
         ViewInteraction fragmentView = onView(withId(R.id.microphone_layout));
 
         fragmentView.check(doesNotExist());
-        // onView(withId(R.id.fab)).perform(click());
+        onView(withId(R.id.fab)).perform(click());
         fragmentView.check(matches(isDisplayed()));
     }
 
