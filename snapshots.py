@@ -8,8 +8,8 @@ package = "com.computemachines.audiotransform"
 finderActivity = ".FinderActivity"
 
 for n in range(5):
-    print "taking snapshot at {}".format(time.localtime())
+    print "taking snapshot at {1}" % (time.localtime())
     # device.startActivity(component=package+"/"+finderActivity)
     result = device.takeSnapshot()
-    result.writeToFile("activity_finder_{:02d}.png".format(n), "png")
+    result.writeToFile("activity_finder_{:02d}.png" % (n), "png")
     time.sleep(60)
