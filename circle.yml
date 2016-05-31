@@ -12,7 +12,7 @@ test:
 
     - ./gradlew assembleDebug
     - ./gradlew assembleDebugAndroidTest
-    - adb install -rtv app/build/outputs/apk/app-debug.apk
-    - adb install -rtv app/build/outputs/apk/app-debug-androidTest-unaligned.apk
+    - adb install -rt app/build/outputs/apk/app-debug.apk
+    - adb install -rt app/build/outputs/apk/app-debug-androidTest-unaligned.apk
     - monkeyrunner snapshots.py
     - mv -v *.png $CIRCLE_ARTIFACTS/
