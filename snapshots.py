@@ -7,9 +7,9 @@ device = MonkeyRunner.waitForConnection()
 package = "com.computemachines.audiotransform"
 finderActivity = ".FinderActivity"
 
-for _ in range(5):
+for n in range(5):
     print "taking snapshot at {}".format(time.localtime())
     # device.startActivity(component=package+"/"+finderActivity)
     result = device.takeSnapshot()
-    result.writeToFile("activity_finder.png", "png")
+    result.writeToFile("activity_finder_{:02d}.png".format(n), "png")
     time.sleep(60)
