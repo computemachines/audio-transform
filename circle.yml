@@ -10,9 +10,9 @@ test:
     - circle-android wait-for-boot
     - adb shell input keyevent 82
 
-    # - ./gradlew assembleDebug
-    # - ./gradlew assembleDebugAndroidTest
-    # - adb install -rt app/build/outputs/apk/app-debug.apk
-    # - adb install -rt app/build/outputs/apk/app-debug-androidTest-unaligned.apk
+    - ./gradlew assembleDebug
+    - ./gradlew assembleDebugAndroidTest
+    - adb install -rtv app/build/outputs/apk/app-debug.apk
+    - adb install -rtv app/build/outputs/apk/app-debug-androidTest-unaligned.apk
     - monkeyrunner snapshots.py
     - mv -v *.png $CIRCLE_ARTIFACTS/
