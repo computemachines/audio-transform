@@ -10,10 +10,10 @@ finderActivity = ".FinderActivity"
 for n in range(25):
     print "taking snapshot at "+str(time.localtime())
     if n == 5:
-        device.wake()
-    if n == 10:
-        # tap in center of device
         device.startActivity(component=package+"/"+finderActivity)
+    if n == 10:
+        # tap in center region
+        device.touch(300, 500, MonkeyDevice.DOWN_AND_UP)
     result = device.takeSnapshot()
     result.writeToFile("activity_finder_%02d.png" % (n), "png")
     time.sleep(60)
