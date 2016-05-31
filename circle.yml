@@ -15,5 +15,7 @@ test:
     - adb install -rt app/build/outputs/apk/app-debug.apk
     - adb install -rt app/build/outputs/apk/app-debug-androidTest-unaligned.apk
     - monkeyrunner snapshots.py
-    - ./gradlew cAT
     - mv -v *.png $CIRCLE_ARTIFACTS/
+    - ./gradlew cAT
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+    - cp -v app/build/outputs/androidTest-results/connected/*.xml $CIRCLE_TEST_REPORTS/junit/
