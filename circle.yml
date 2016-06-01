@@ -9,7 +9,7 @@ test:
   override:
     - circle-android wait-for-boot
     - adb shell input keyevent 82
-
+    - sleep 100
     - ./gradlew assembleDebug
     - ./gradlew assembleDebugAndroidTest
     - adb install -rt app/build/outputs/apk/app-debug.apk
