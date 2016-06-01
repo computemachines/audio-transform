@@ -10,7 +10,7 @@ finderActivity = ".FinderActivity"
 result = device.takeSnapshot()
 result.writeToFile("system_initial.png" % (n), "png")
 
-for n in range(25):
+for n in range(16):
     print "current time: "+str(time.localtime())
     if n == 5:
         device.startActivity(component=package+"/"+finderActivity)
