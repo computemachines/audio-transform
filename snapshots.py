@@ -8,7 +8,7 @@ package = "com.computemachines.audiotransform"
 finderActivity = ".FinderActivity"
 
 result = device.takeSnapshot()
-result.writeToFile("system_initial.png" % (n), "png")
+result.writeToFile("system_initial.png", "png")
 
 for n in range(16):
     print "current time: "+str(time.localtime())
@@ -19,5 +19,5 @@ for n in range(16):
         device.touch(300, 500, MonkeyDevice.DOWN_AND_UP)
     if n == 15:
         result = device.takeSnapshot()
-        result.writeToFile("activity_finder.png" % (n), "png")
+        result.writeToFile("activity_finder.png", "png")
     time.sleep(60)
