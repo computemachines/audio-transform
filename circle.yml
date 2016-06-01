@@ -8,6 +8,7 @@ dependencies:
 test:
   override:
     - circle-android wait-for-boot
+    - sleep 100
     - adb shell input keyevent 82
     - sleep 100
     - ./gradlew assembleDebug
