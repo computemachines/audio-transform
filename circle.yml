@@ -8,13 +8,16 @@ dependencies:
 test:
   override:
     - circle-android wait-for-boot
+    - sleep 100
     - adb shell input keyevent 82
-
+    - sleep 100
     - ./gradlew assembleDebug
     - ./gradlew assembleDebugAndroidTest
     - adb install -rt app/build/outputs/apk/app-debug.apk
     - adb install -rt app/build/outputs/apk/app-debug-androidTest-unaligned.apk
-    - adb shell am start com.computemachines.audiotransform/.FinderActivity
-
     - monkeyrunner snapshots.py
-    - mv -v *.png $CIRCLE_ARTIFACTS/
+    - montage -geometry +0+0+0 *.png $CIRCLE_ARTIFACTS/montage.png
+    - cp -v *.png $CIRCLE_ARTIFACTS/
+    - ./gradlew cAT
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+    - cp -v app/build/outputs/androidTest-results/connected/*.xml $CIRCLE_TEST_REPORTS/junit/
